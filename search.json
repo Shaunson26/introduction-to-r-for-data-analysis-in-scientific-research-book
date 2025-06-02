@@ -30,11 +30,11 @@
     ]
   },
   {
-    "objectID": "chapter_1_welcome_to_r_and_rstudio.html#installing-r-and-rstudio",
-    "href": "chapter_1_welcome_to_r_and_rstudio.html#installing-r-and-rstudio",
+    "objectID": "chapter_1_welcome_to_r_and_rstudio.html#what-is-rstudio-and-role-does-it-play",
+    "href": "chapter_1_welcome_to_r_and_rstudio.html#what-is-rstudio-and-role-does-it-play",
     "title": "2  Chapter 1: Welcome to the World of R and RStudio",
-    "section": "2.2 1.2 Installing R and RStudio",
-    "text": "2.2 1.2 Installing R and RStudio\n- Step-by-step instructions for different operating systems (Windows, macOS, Linux).\n- Highlight the distinction between R (the language) and RStudio (the IDE).",
+    "section": "2.2 1.2 What is RStudio and role does it play?",
+    "text": "2.2 1.2 What is RStudio and role does it play?\nR is a powerful programming language specifically designed for statistical computing and graphics. While you can interact with R through a basic command-line interface, scientific researchers will find RStudio to be an invaluable tool. Think of R as the engine under the hood, doing all the computational work. RStudio, on the other hand, is a user-friendly integrated development environment (IDE) that provides a more organized and efficient way to interact with R.\nRStudio enhances your workflow by offering a suite of features tailored for R users. It typically includes a code editor with syntax highlighting and autocompletion, a console where you execute R commands and see the output, a workspace pane to track your data and variables, a history of your commands, and tools for plotting, package management, and debugging. Essentially, RStudio provides a well-structured environment that makes writing code, managing projects, and analyzing data in R much more intuitive and productive for scientific research.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Chapter 1: Welcome to the World of R and RStudio</span>"
     ]
