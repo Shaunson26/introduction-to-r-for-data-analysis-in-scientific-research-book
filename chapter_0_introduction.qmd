@@ -1,0 +1,17 @@
+# Introduction
+
+Welcome paragraph
+
+# What you will learn
+
+- Chapter layout
+- Some notes
+
+# What you will not learn
+
+- Not aimed at programming, strict data science
+
+# Anything else
+
+
+

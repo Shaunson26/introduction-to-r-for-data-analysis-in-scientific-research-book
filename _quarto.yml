@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Introduction to R for data analysis in scientific research"
+  author: "Shaun Nielsen and AI"
+  date: "29/05/2025"
+  chapters:
+    - index.qmd
+    - chapter_0_introduction.qmd
+    - chapter_1_welcome_to_r_and_rstudio.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+    cover-image: cover.png
+
+editor: visual
+
+execute:
+  freeze: auto
