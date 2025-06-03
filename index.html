@@ -116,19 +116,31 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_1_welcome_to_r_and_rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Welcome to the World of R and RStudio</span></span></a>
+  <a href="./chapter_1_why_r_and_what_is_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2_initial_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Initial steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3_a_gentle_first_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -188,218 +200,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1><p><img src="cover.png" title="Introduction to R for data analysis in scientific research" class="quarto-cover-image img-fluid"></p>
-<p>Here is an introductory sentence about this book. Many many introductory R resources lean heavily towards programming concepts and data science workflows, which might feel overwhelming for scientific researchers with smaller, cleaner datasets and no prior programming experience. I hope to provide a gentler introduction focusing on immediate needs with the idea that this can be much more effective in climbing the R learning curve - focusing on immediate usefulness and building complexity gradually</p>
-<p><strong>Target Audience:</strong> Scientific researchers with relatively clean datasets and little to no prior experience with R.</p>
-<hr>
-<p>Book draft layout</p>
-<p><strong>Part 1: Getting Started and Your First Steps</strong></p>
-<p><strong>Chapter 1: Welcome to the World of R and RStudio</strong></p>
-<ul>
-<li>1.1 Why R for Scientific Research?
-<ul>
-<li>Flexibility, reproducibility, powerful statistical capabilities, excellent visualization, open-source and free.</li>
-<li>Briefly touch upon limitations (learning curve, can be memory-intensive with very large datasets).</li>
-</ul></li>
-<li>1.2 Installing R and RStudio
-<ul>
-<li>Step-by-step instructions for different operating systems (Windows, macOS, Linux).</li>
-<li>Highlight the distinction between R (the language) and RStudio (the IDE).</li>
-</ul></li>
-<li>1.3 Navigating the RStudio Interface
-<ul>
-<li>Console, Source Editor, Environment/History/Connections, Files/Plots/Packages/Help/Viewer.</li>
-<li>Introduce basic interactions: typing commands in the console, creating and running scripts.</li>
-</ul></li>
-<li>1.4 Your First R Command: A Simple Calculation
-<ul>
-<li>Demonstrate basic arithmetic operations directly in the console.</li>
-<li>Introduce the assignment operator <code>&lt;-</code> to store values in variables.</li>
-<li>Example: Calculating a simple mean or standard deviation from a few manually entered numbers.</li>
-</ul></li>
-</ul>
-<p><strong>Chapter 2: A Gentle Introduction with a Real-World Example</strong></p>
-<ul>
-<li>2.1 The Scenario: A Small Experiment/Observation
-<ul>
-<li>Create a very simple, relatable scientific scenario with a small dataset (e.g., measurements of plant height under two conditions, enzyme activity at different temperatures).</li>
-<li>Present the data in a clear, table-like format within the chapter.</li>
-</ul></li>
-<li>2.2 Entering Data Directly in R
-<ul>
-<li>Introduce basic data structures: vectors using <code>c()</code>.</li>
-<li>Creating a simple data frame using <code>data.frame()</code>.</li>
-<li>Emphasize the importance of clear variable names.</li>
-</ul></li>
-<li>2.3 Performing a Basic Analysis
-<ul>
-<li>Calculating descriptive statistics (mean, median, standard deviation) using built-in functions.</li>
-<li>Creating a simple plot (e.g., a bar chart or scatter plot) using base R graphics to visualize the data.</li>
-<li>Focus on interpreting the output in the context of the scientific scenario.</li>
-</ul></li>
-<li>2.4 Saving Your Work: R Scripts
-<ul>
-<li>Creating and saving R scripts (<code>.R</code> files) in RStudio.</li>
-<li>The importance of commenting your code.</li>
-<li>Running scripts from the Source Editor.</li>
-</ul></li>
-</ul>
-<hr>
-<p><strong>Part 2: Working with Your Scientific Data</strong></p>
-<p><strong>Chapter 3: Importing Your Data into R</strong></p>
-<ul>
-<li>3.1 Understanding Common Scientific Data Formats
-<ul>
-<li>CSV (<code>.csv</code>), Tab-separated (<code>.txt</code>, <code>.tsv</code>), Excel (<code>.xlsx</code>).</li>
-</ul></li>
-<li>3.2 Importing Data with <code>read.csv()</code>, <code>read.table()</code>, and <code>readxl::read_excel()</code>
-<ul>
-<li>Detailed explanation of key arguments: <code>header</code>, <code>sep</code>, <code>dec</code>, <code>stringsAsFactors</code> (and why it’s often <code>FALSE</code> now).</li>
-<li>Working with file paths and the working directory.</li>
-<li>Troubleshooting common import errors.</li>
-</ul></li>
-<li>3.3 Exploring Your Imported Data
-<ul>
-<li>Functions for inspecting data frames: <code>head()</code>, <code>tail()</code>, <code>str()</code>, <code>summary()</code>, <code>dim()</code>, <code>colnames()</code>.</li>
-<li>Accessing variables (columns) using <code>$</code> notation.</li>
-</ul></li>
-</ul>
-<p><strong>Chapter 4: Data Wrangling for Clarity and Analysis</strong></p>
-<ul>
-<li>4.1 Introduction to Data Wrangling Principles
-<ul>
-<li>The concept of “tidy data”.</li>
-<li>Why data wrangling is crucial for effective analysis.</li>
-</ul></li>
-<li>4.2 Essential Data Manipulation with <code>dplyr</code>
-<ul>
-<li>Introducing the <code>dplyr</code> package and the pipe operator <code>%&gt;%</code>.</li>
-<li>Filtering rows based on conditions using <code>filter()</code>.</li>
-<li>Selecting specific columns using <code>select()</code>.</li>
-<li>Creating new columns or modifying existing ones using <code>mutate()</code>.</li>
-<li>Summarizing data using <code>summarise()</code> and <code>group_by()</code>.</li>
-<li>Illustrate with examples relevant to scientific data (e.g., filtering data for a specific treatment group, calculating group means).</li>
-</ul></li>
-</ul>
-<p><strong>Chapter 5: Visualizing Your Findings with <code>ggplot2</code></strong></p>
-<ul>
-<li>5.1 The Grammar of Graphics and <code>ggplot2</code>
-<ul>
-<li>Introducing the fundamental components of a <code>ggplot2</code> plot: data, aesthetics, geometry, statistics, facets, themes.</li>
-<li>Emphasize the layered approach to building plots.</li>
-</ul></li>
-<li>5.2 Creating Common Scientific Visualizations
-<ul>
-<li>Scatter plots for relationships between continuous variables (<code>geom_point()</code>).</li>
-<li>Line plots for trends over time or continuous variables (<code>geom_line()</code>).</li>
-<li>Bar charts and column charts for comparing categorical data (<code>geom_bar()</code>, <code>geom_col()</code>).</li>
-<li>Box plots and violin plots for comparing distributions (<code>geom_boxplot()</code>, <code>geom_violin()</code>).</li>
-<li>Histograms and density plots for visualizing distributions of single variables (<code>geom_histogram()</code>, <code>geom_density()</code>).</li>
-</ul></li>
-<li>5.3 Customizing Your Plots for Publication Quality
-<ul>
-<li>Adding titles, labels, and legends.</li>
-<li>Modifying axes and scales.</li>
-<li>Choosing colors and themes.</li>
-<li>Saving plots to different file formats (<code>.png</code>, <code>.pdf</code>, <code>.tiff</code>).</li>
-</ul></li>
-</ul>
-<hr>
-<p><strong>Part 3: Unveiling Insights with Basic Statistical Methods</strong></p>
-<p><strong>Chapter 6: Common Statistical Tests in R</strong></p>
-<ul>
-<li>6.1 Introduction to Statistical Inference (brief overview)
-<ul>
-<li>Hypothesis testing, p-values (explain conceptually, avoid deep theoretical dives).</li>
-</ul></li>
-<li>6.2 Performing t-tests (<code>t.test()</code>)
-<ul>
-<li>Independent samples t-test (comparing two groups).</li>
-<li>Paired samples t-test (comparing measurements within the same subject/unit).</li>
-<li>Illustrate with relevant scientific examples.</li>
-</ul></li>
-<li>6.3 Analysis of Variance (ANOVA) (<code>aov()</code>)
-<ul>
-<li>One-way ANOVA for comparing means of multiple groups.</li>
-<li>Briefly mention post-hoc tests (e.g., Tukey’s HSD using <code>TukeyHSD()</code>).</li>
-<li>Scientific examples with more than two groups.</li>
-</ul></li>
-<li>6.4 Correlation and Simple Linear Regression (<code>cor()</code>, <code>lm()</code>)
-<ul>
-<li>Measuring the strength and direction of linear relationships.</li>
-<li>Building a simple linear model to predict one variable from another.</li>
-<li>Interpreting the output (correlation coefficient, R-squared, p-values for coefficients).</li>
-</ul></li>
-</ul>
-<p><strong>Chapter 7: Presenting Reproducible Research with R Markdown</strong></p>
-<ul>
-<li>7.1 What is Reproducible Research and Why is it Important?
-<ul>
-<li>Transparency, collaboration, avoiding errors.</li>
-</ul></li>
-<li>7.2 Introduction to R Markdown
-<ul>
-<li>Combining code, narrative text, and output in a single document.</li>
-<li>Basic Markdown syntax (headings, lists, emphasis).</li>
-<li>Code chunks and their options (eval, include, echo, warning, message, fig.cap).</li>
-</ul></li>
-<li>7.3 Creating Different Output Formats
-<ul>
-<li>HTML, PDF, Word documents.</li>
-<li>Customizing the appearance of your R Markdown documents.</li>
-</ul></li>
-<li>7.4 A Simple Workflow: From Data to Report with R Markdown
-<ul>
-<li>Demonstrate creating a basic report that includes data loading, analysis, and visualization.</li>
-</ul></li>
-</ul>
-<hr>
-<p><strong>Part 4: Enhancing Your Workflow and Beyond</strong></p>
-<p><strong>Chapter 8: Version Control with Git and GitHub (Introduction)</strong></p>
-<ul>
-<li>8.1 Why Version Control for Scientific Projects?
-<ul>
-<li>Tracking changes, collaboration, reverting to previous versions, backups.</li>
-</ul></li>
-<li>8.2 Basic Git Concepts
-<ul>
-<li>Repositories, commits, branches.</li>
-</ul></li>
-<li>8.3 Introduction to GitHub
-<ul>
-<li>Creating repositories, pushing and pulling changes.</li>
-<li>Collaboration on GitHub (brief mention).</li>
-</ul></li>
-<li>8.4 Integrating Git and GitHub with RStudio
-<ul>
-<li>Using the Git pane in RStudio for basic operations.</li>
-</ul></li>
-</ul>
-<p><strong>Chapter 9: Next Steps in Your R Journey</strong></p>
-<ul>
-<li>9.1 Exploring R Packages for Specialized Tasks
-<ul>
-<li>Briefly mention packages relevant to different scientific disciplines (e.g., <code>lme4</code> for mixed-effects models, <code>survival</code> for survival analysis, <code>phyloseq</code> for microbiome analysis).</li>
-</ul></li>
-<li>9.2 Finding Help and Resources
-<ul>
-<li>R documentation (<code>?function_name</code>).</li>
-<li>Stack Overflow and R-related online communities.</li>
-<li>CRAN task views.</li>
-<li>Books and online courses.</li>
-</ul></li>
-<li>9.3 Best Practices for Writing R Code
-<ul>
-<li>Clarity, consistency, commenting, organization.</li>
-</ul></li>
-</ul>
-<hr>
-<p><strong>Appendices (Optional):</strong></p>
-<ul>
-<li>Appendix A: Common R Errors and How to Troubleshoot Them</li>
-<li>Appendix B: Installing and Managing R Packages</li>
-<li>Appendix C: Further Resources for Specific Scientific Domains</li>
-</ul>
-<p>This outline provides a structured approach that starts with immediate, simple applications and gradually introduces more complex concepts. By focusing on practical examples relevant to scientific research and emphasizing the integration with RStudio, you can create a valuable resource for your target audience. Remember to keep the language clear, concise, and avoid unnecessary jargon. Good luck!</p>
+<p>This book will teach you how to use R from the perspective of scientific researcher and the types of tasks required conducting data analysis in scientific research. Many introductory R resources lean heavily towards programming concepts, pure statistics or data science workflows, which might feel overwhelming for scientific researchers who have typically spent much time collecting smaller and cleaner data from experimental trials. It is an introductory text aimed as users with no prior programming experience. I hope to provide a gentler introduction focusing on immediate needs with the idea that this can be much more effective in climbing the R learning curve - getting most out of R early and then and building complexity gradually.</p>
 
 
 </section>
@@ -830,7 +631,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./chapter_0_introduction.html" class="pagination-link" aria-label="Introduction">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Introduction</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

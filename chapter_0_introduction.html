@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – Introduction to R for data analysis in scientific research</title>
+<title>Introduction – Introduction to R for data analysis in scientific research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter_1_welcome_to_r_and_rstudio.html" rel="next">
+<link href="./chapter_1_why_r_and_what_is_rstudio.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_0_introduction.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_0_introduction.html">Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,19 +115,31 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_introduction.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_1_welcome_to_r_and_rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Welcome to the World of R and RStudio</span></span></a>
+  <a href="./chapter_1_why_r_and_what_is_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_2_initial_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Initial steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3_a_gentle_first_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -146,9 +158,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-you-will-learn" id="toc-what-you-will-learn" class="nav-link active" data-scroll-target="#what-you-will-learn"><span class="header-section-number">2</span> What you will learn</a></li>
-  <li><a href="#what-you-will-not-learn" id="toc-what-you-will-not-learn" class="nav-link" data-scroll-target="#what-you-will-not-learn"><span class="header-section-number">3</span> What you will not learn</a></li>
-  <li><a href="#anything-else" id="toc-anything-else" class="nav-link" data-scroll-target="#anything-else"><span class="header-section-number">4</span> Anything else</a></li>
+  <li><a href="#what-you-will-learn" id="toc-what-you-will-learn" class="nav-link active" data-scroll-target="#what-you-will-learn">What you will learn</a></li>
+  <li><a href="#what-you-will-not-learn" id="toc-what-you-will-not-learn" class="nav-link" data-scroll-target="#what-you-will-not-learn">What you will not learn</a></li>
+  <li><a href="#anything-else" id="toc-anything-else" class="nav-link" data-scroll-target="#anything-else">Anything else</a></li>
   </ul>
 </nav>
     </div>
@@ -157,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title">Introduction</h1>
 </div>
 
 
@@ -175,21 +187,21 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Welcome paragraph</p>
-<section id="what-you-will-learn" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> What you will learn</h1>
+<section id="what-you-will-learn" class="level1">
+<h1>What you will learn</h1>
 <ul>
 <li>Chapter layout</li>
 <li>Some notes</li>
 </ul>
 </section>
-<section id="what-you-will-not-learn" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> What you will not learn</h1>
+<section id="what-you-will-not-learn" class="level1">
+<h1>What you will not learn</h1>
 <ul>
 <li>Not aimed at programming, strict data science</li>
 </ul>
 </section>
-<section id="anything-else" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Anything else</h1>
+<section id="anything-else" class="level1">
+<h1>Anything else</h1>
 
 
 </section>
@@ -622,8 +634,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_1_welcome_to_r_and_rstudio.html" class="pagination-link" aria-label="Chapter 1: Welcome to the World of R and RStudio">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Welcome to the World of R and RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_1_why_r_and_what_is_rstudio.html" class="pagination-link" aria-label="Why R and what is RStudio?">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

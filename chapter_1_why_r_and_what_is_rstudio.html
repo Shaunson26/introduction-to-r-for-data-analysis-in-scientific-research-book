@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Chapter 1: Welcome to the World of R and RStudio – Introduction to R for data analysis in scientific research</title>
+<title>1&nbsp; Why R and what is RStudio? – Introduction to R for data analysis in scientific research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter_2_a_gentle_introduction_to_r.html" rel="next">
+<link href="./chapter_2_initial_steps.html" rel="next">
 <link href="./chapter_0_introduction.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1_welcome_to_r_and_rstudio.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Welcome to the World of R and RStudio</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_1_why_r_and_what_is_rstudio.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,19 +149,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./chapter_0_introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_1_welcome_to_r_and_rstudio.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Welcome to the World of R and RStudio</span></span></a>
+  <a href="./chapter_1_why_r_and_what_is_rstudio.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_2_a_gentle_introduction_to_r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle introduction to R</span></span></a>
+  <a href="./chapter_2_initial_steps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Initial steps</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_3_a_gentle_first_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -186,16 +192,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-r-for-scientific-research" id="toc-why-r-for-scientific-research" class="nav-link active" data-scroll-target="#why-r-for-scientific-research"><span class="header-section-number">2.1</span> Why R for Scientific Research?</a></li>
-  <li><a href="#what-is-rstudio-and-role-does-it-play" id="toc-what-is-rstudio-and-role-does-it-play" class="nav-link" data-scroll-target="#what-is-rstudio-and-role-does-it-play"><span class="header-section-number">2.2</span> What is RStudio and role does it play?</a></li>
-  <li><a href="#navigating-the-rstudio-interface" id="toc-navigating-the-rstudio-interface" class="nav-link" data-scroll-target="#navigating-the-rstudio-interface"><span class="header-section-number">2.3</span> Navigating the RStudio Interface</a></li>
-  <li><a href="#your-first-r-command-a-simple-calculation" id="toc-your-first-r-command-a-simple-calculation" class="nav-link" data-scroll-target="#your-first-r-command-a-simple-calculation"><span class="header-section-number">2.4</span> Your First R Command: A Simple Calculation</a></li>
-  <li><a href="#using-an-r-script-to-record-your-code" id="toc-using-an-r-script-to-record-your-code" class="nav-link" data-scroll-target="#using-an-r-script-to-record-your-code"><span class="header-section-number">2.5</span> Using an R script to record your code</a>
+  <li><a href="#why-r-for-scientific-research" id="toc-why-r-for-scientific-research" class="nav-link active" data-scroll-target="#why-r-for-scientific-research"><span class="header-section-number">1.1</span> Why R for scientific research?</a></li>
+  <li><a href="#what-is-rstudio-and-role-does-it-play" id="toc-what-is-rstudio-and-role-does-it-play" class="nav-link" data-scroll-target="#what-is-rstudio-and-role-does-it-play"><span class="header-section-number">1.2</span> What is RStudio and role does it play?</a></li>
+  <li><a href="#navigating-the-rstudio-interface" id="toc-navigating-the-rstudio-interface" class="nav-link" data-scroll-target="#navigating-the-rstudio-interface"><span class="header-section-number">1.3</span> Navigating the RStudio interface</a></li>
+  <li><a href="#your-first-r-command-a-simple-calculation" id="toc-your-first-r-command-a-simple-calculation" class="nav-link" data-scroll-target="#your-first-r-command-a-simple-calculation"><span class="header-section-number">1.4</span> Your first R command: a simple calculation</a></li>
+  <li><a href="#using-an-r-script-to-record-your-code" id="toc-using-an-r-script-to-record-your-code" class="nav-link" data-scroll-target="#using-an-r-script-to-record-your-code"><span class="header-section-number">1.5</span> Using an R script to record your code</a>
   <ul class="collapse">
-  <li><a href="#creating-your-first-script" id="toc-creating-your-first-script" class="nav-link" data-scroll-target="#creating-your-first-script"><span class="header-section-number">2.5.1</span> Creating your first script</a></li>
-  <li><a href="#sending-code-from-script-to-console" id="toc-sending-code-from-script-to-console" class="nav-link" data-scroll-target="#sending-code-from-script-to-console"><span class="header-section-number">2.5.2</span> Sending Code from Script to Console</a></li>
-  <li><a href="#commenting-your-code" id="toc-commenting-your-code" class="nav-link" data-scroll-target="#commenting-your-code"><span class="header-section-number">2.5.3</span> Commenting Your Code</a></li>
-  <li><a href="#syntax-highlighting-in-rstudio" id="toc-syntax-highlighting-in-rstudio" class="nav-link" data-scroll-target="#syntax-highlighting-in-rstudio"><span class="header-section-number">2.5.4</span> Syntax Highlighting in RStudio</a></li>
+  <li><a href="#creating-your-first-script" id="toc-creating-your-first-script" class="nav-link" data-scroll-target="#creating-your-first-script"><span class="header-section-number">1.5.1</span> Creating your first script</a></li>
+  <li><a href="#sending-code-from-script-to-console" id="toc-sending-code-from-script-to-console" class="nav-link" data-scroll-target="#sending-code-from-script-to-console"><span class="header-section-number">1.5.2</span> Sending Code from Script to Console</a></li>
+  <li><a href="#commenting-your-code" id="toc-commenting-your-code" class="nav-link" data-scroll-target="#commenting-your-code"><span class="header-section-number">1.5.3</span> Commenting your code</a></li>
+  <li><a href="#syntax-highlighting-in-rstudio" id="toc-syntax-highlighting-in-rstudio" class="nav-link" data-scroll-target="#syntax-highlighting-in-rstudio"><span class="header-section-number">1.5.4</span> Syntax highlighting in RStudio</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -205,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Chapter 1: Welcome to the World of R and RStudio</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Why R and what is RStudio?</span></h1>
 </div>
 
 
@@ -222,8 +228,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="why-r-for-scientific-research" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="why-r-for-scientific-research"><span class="header-section-number">2.1</span> Why R for Scientific Research?</h2>
+<section id="why-r-for-scientific-research" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="why-r-for-scientific-research"><span class="header-section-number">1.1</span> Why R for scientific research?</h2>
 <p>R has become a cornerstone of data analysis in scientific research for a multitude of compelling reasons. At its heart, R is a powerful and flexible programming language specifically designed for statistical computing and graphics. This inherent focus means that its core functionalities and a vast ecosystem of packages are tailored to the needs of researchers, offering tools for everything from basic data manipulation and visualization to advanced statistical modeling and machine learning. Unlike general-purpose programming languages, R provides a syntax and structure that naturally aligns with statistical concepts, making it more intuitive for scientists with a quantitative background.</p>
 <p>Furthermore, the open-source nature of R fosters a vibrant and collaborative community of researchers and developers worldwide. This community actively contributes to the Comprehensive R Archive Network (CRAN), a repository hosting thousands of freely available packages that extend R’s capabilities to virtually every scientific discipline. Whether you’re analyzing genomic data, modeling climate patterns, conducting social science surveys, or processing astronomical observations, chances are there’s an R package specifically designed to streamline your workflow and provide cutting-edge analytical techniques. This constant expansion and peer-review within the community ensure that R remains at the forefront of statistical innovation.</p>
 <p>Beyond its statistical prowess and extensive package ecosystem, R excels in producing high-quality, publication-ready graphics. Its powerful plotting capabilities allow researchers to create insightful visualizations that effectively communicate their findings. The flexibility to customize every aspect of a plot, from colors and labels to complex layouts, ensures that figures meet the rigorous standards of scientific journals and presentations. This ability to seamlessly integrate data analysis with compelling visual representation is invaluable for both exploration and dissemination of research results.</p>
@@ -239,8 +245,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="what-is-rstudio-and-role-does-it-play" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="what-is-rstudio-and-role-does-it-play"><span class="header-section-number">2.2</span> What is RStudio and role does it play?</h2>
+<section id="what-is-rstudio-and-role-does-it-play" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="what-is-rstudio-and-role-does-it-play"><span class="header-section-number">1.2</span> What is RStudio and role does it play?</h2>
 <p>While you can interact with R through it’s basic command-line interface, scientific researchers will find RStudio to be an invaluable tool to work with R. Think of R as the engine under the hood, doing all the computational work. RStudio, on the other hand, is a user-friendly integrated development environment (IDE) that provides a more organized and efficient way to interact with R.</p>
 <p>RStudio enhances your workflow by offering a suite of features tailored for R users. It typically includes a code editor with syntax highlighting and autocompletion, a console where you execute R commands and see the output, a workspace pane to track your data and variables, a history of your commands, and tools for plotting, package management, and debugging. Essentially, RStudio provides a well-structured environment that makes writing code, managing projects, and analyzing data in R much more intuitive and productive for scientific research.</p>
 <div class="cell" data-caption="A screenshot of R">
@@ -253,8 +259,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="navigating-the-rstudio-interface" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="navigating-the-rstudio-interface"><span class="header-section-number">2.3</span> Navigating the RStudio Interface</h2>
+<section id="navigating-the-rstudio-interface" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="navigating-the-rstudio-interface"><span class="header-section-number">1.3</span> Navigating the RStudio interface</h2>
 <pre><code>- Console, Source Editor, Environment/History/Connections, Files/Plots/Packages/Help/Viewer.
 - Introduce basic interactions: typing commands in the console, creating and running scripts.</code></pre>
 <p>After installing R, RStudio and git (see prereqs) and opening RStudio for the first time, you will be presented with an interface containing four primary panels.</p>
@@ -275,8 +281,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>As you move along your R journey, you will be familiar with the use of each of these panels. Our first foray will be entering some data into the <strong>R console</strong>.</p>
 </section>
-<section id="your-first-r-command-a-simple-calculation" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="your-first-r-command-a-simple-calculation"><span class="header-section-number">2.4</span> Your First R Command: A Simple Calculation</h2>
+<section id="your-first-r-command-a-simple-calculation" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="your-first-r-command-a-simple-calculation"><span class="header-section-number">1.4</span> Your first R command: a simple calculation</h2>
 <pre><code>- Demonstrate basic arithmetic operations directly in the console.
 - Introduce the assignment operator `&lt;-` to store values in variables.
 - Example: Calculating a simple mean or standard deviation from a few manually entered numbers.</code></pre>
@@ -309,8 +315,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="using-an-r-script-to-record-your-code" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="using-an-r-script-to-record-your-code"><span class="header-section-number">2.5</span> Using an R script to record your code</h2>
+<section id="using-an-r-script-to-record-your-code" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="using-an-r-script-to-record-your-code"><span class="header-section-number">1.5</span> Using an R script to record your code</h2>
 <p>So far, you’ve directly typed commands into the R console and seen the immediate output. This is a great way to explore and get quick answers, but for any serious data analysis in scientific research, you will want a more permanent and organized way to store your code: the R script.</p>
 <p>An R script is simply a plain text file, typically saved with a <code>.R</code> file extension, where you write and save all your R commands. Think of it as your laboratory notebook for R code.</p>
 <p>RStudio allows us to create and edit R scripts in the <strong>Source</strong> panel.</p>
@@ -330,8 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Collaboration: When working with others, sharing an R script is far more effective than trying to convey commands verbally or through screenshots. Everyone can see the exact code used and contribute to its development.</p></li>
 <li><p>Error Checking and Debugging: It’s much easier to spot and correct errors in a well-structured script than trying to remember a long sequence of console commands.</p></li>
 </ul>
-<section id="creating-your-first-script" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="creating-your-first-script"><span class="header-section-number">2.5.1</span> Creating your first script</h3>
+<section id="creating-your-first-script" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="creating-your-first-script"><span class="header-section-number">1.5.1</span> Creating your first script</h3>
 <p>Add the following line of code to a new script within RStudio.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>whale_breaches <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
@@ -339,38 +345,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>whale_breaches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sending-code-from-script-to-console" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="sending-code-from-script-to-console"><span class="header-section-number">2.5.2</span> Sending Code from Script to Console</h3>
+<section id="sending-code-from-script-to-console" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="sending-code-from-script-to-console"><span class="header-section-number">1.5.2</span> Sending Code from Script to Console</h3>
 <p>RStudio provides a seamless way to send code from your script to the console for execution. You can type your commands into the script editor pane. To run a line or a selected block of code, simply place your cursor on the line (or highlight the block) and press <code>Ctrl + Enter</code> (on Windows/Linux) or <code>Cmd + Enter</code> (on macOS). RStudio will then send that code to the console, and you’ll see the output appear there, just as if you had typed it directly. Try this now with the code you just copied to your R script. You should see the following in the R console.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>whale_breaches <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>whale_breaches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3 5 2 4</code></pre>
-</div>
-</div>
+<pre><code>&gt; whale_breaches &lt;- c(3, 5, 2, 4)
+&gt; whale_breaches
+[1] 3 5 2 4</code></pre>
 </section>
-<section id="commenting-your-code" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="commenting-your-code"><span class="header-section-number">2.5.3</span> Commenting Your Code</h3>
+<section id="commenting-your-code" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="commenting-your-code"><span class="header-section-number">1.5.3</span> Commenting your code</h3>
 <p>A crucial aspect of good scripting practice is adding comments to your code. Comments are lines in your script that R ignores when executing the code. They serve as explanations or notes to yourself and others about what your code does, why you made certain decisions, or to temporarily disable a line of code. In R, anything following a <code>#</code> symbol on a given line is considered a comment.</p>
 <p>In your introductory phase of learning R, you will want to comment on what each line of code is doing. For example</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line stores the values into the variable called whale_breaches</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c() combines values into a vector</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>whale_breaches <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This prints the values inside the variable whale_breaches to the R console</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>whale_breaches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This line stores the values into the variable called whale_breaches</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># c() combines values into a vector</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>whale_breaches <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This prints the values inside the variable whale_breaches to the R console</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>whale_breaches</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="syntax-highlighting-in-rstudio" class="level3" data-number="2.5.4">
-<h3 data-number="2.5.4" class="anchored" data-anchor-id="syntax-highlighting-in-rstudio"><span class="header-section-number">2.5.4</span> Syntax Highlighting in RStudio</h3>
-<p>You might have already noticed that RStudio automatically colors different parts of your code in the script editor. This feature, called <strong>syntax highlighting</strong>, makes your code much easier to read and understand. Keywords, functions, operators, and comments are typically displayed in different colors, helping you quickly identify the various components of your script and spot potential typos or errors. For instance, comments will often appear in a distinct color (like green), making them clearly stand out from the executable code. This visual aid is incredibly helpful, especially as you begin writing more complex scripts.</p>
+<section id="syntax-highlighting-in-rstudio" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="syntax-highlighting-in-rstudio"><span class="header-section-number">1.5.4</span> Syntax highlighting in RStudio</h3>
+<p>You might have already noticed that RStudio automatically colors different parts of your code in the script editor. This feature, called <strong>syntax highlighting</strong>, makes your code much easier to read and understand. Comments, numbers, text and keywords are typically displayed in different colors, helping you quickly identify the various components of your script and spot potential typos or errors. For instance, comments will often appear in a distinct color (like green), making them clearly stand out from the executable code. This visual aid is incredibly helpful, especially as you begin writing more complex scripts.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is some code that should highlight syntax highlighting</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>number_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>text_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Some'</span>, <span class="st">'text'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>square_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ x<span class="sc">^</span><span class="dv">2</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is some code that should highlight syntax highlighting</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>number_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>text_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Some'</span>, <span class="st">'text'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>square_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ x<span class="sc">^</span><span class="dv">2</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -801,12 +803,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./chapter_0_introduction.html" class="pagination-link" aria-label="Introduction">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introduction</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_2_a_gentle_introduction_to_r.html" class="pagination-link" aria-label="A gentle introduction to R">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_2_initial_steps.html" class="pagination-link" aria-label="Initial steps">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Initial steps</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
