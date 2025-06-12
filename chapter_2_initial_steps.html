@@ -172,8 +172,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./chapter_4_using_a_dataframe_for_your_first_analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Using a data.frame for your data</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./chapter_5_external_data_and_data_import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">External data and data import</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -201,6 +213,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#commenting-your-code" id="toc-commenting-your-code" class="nav-link" data-scroll-target="#commenting-your-code"><span class="header-section-number">2.3.3</span> Commenting your code</a></li>
   <li><a href="#syntax-highlighting-in-rstudio" id="toc-syntax-highlighting-in-rstudio" class="nav-link" data-scroll-target="#syntax-highlighting-in-rstudio"><span class="header-section-number">2.3.4</span> Syntax highlighting in RStudio</a></li>
   </ul></li>
+  <li><a href="#extending-r-with-additional-packages" id="toc-extending-r-with-additional-packages" class="nav-link" data-scroll-target="#extending-r-with-additional-packages"><span class="header-section-number">2.4</span> Extending R with additional packages</a>
+  <ul class="collapse">
+  <li><a href="#installing-packages" id="toc-installing-packages" class="nav-link" data-scroll-target="#installing-packages"><span class="header-section-number">2.4.1</span> Installing packages</a></li>
+  <li><a href="#loading-package" id="toc-loading-package" class="nav-link" data-scroll-target="#loading-package"><span class="header-section-number">2.4.2</span> Loading package</a></li>
+  <li><a href="#package-helpers" id="toc-package-helpers" class="nav-link" data-scroll-target="#package-helpers"><span class="header-section-number">2.4.3</span> Package helpers</a></li>
+  </ul></li>
+  <li><a href="#rstudio-configuration" id="toc-rstudio-configuration" class="nav-link" data-scroll-target="#rstudio-configuration"><span class="header-section-number">2.5</span> RStudio configuration</a></li>
   </ul>
 </nav>
     </div>
@@ -248,12 +267,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="your-first-r-command-a-simple-calculation" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="your-first-r-command-a-simple-calculation"><span class="header-section-number">2.2</span> Your first R command: a simple calculation</h2>
-<p>For your first interaction with R, let’s start with something very basic. We will type some code directly into the R console and observe the results.</p>
-<p>Imagine you have collected a few measurements, say the heights (in cm) of three plants: 15 cm, 18 cm, and 20 cm. In R, you can represent these values as a vector using the <code>c()</code> function (which stands for “combine”). Next, we assign those values using the <code>&lt;-</code> into a variable named <code>plant_heights</code>. Type the following into your R console and press Enter:</p>
+<p>For your first interaction with R, we will start with something very basic. We will type some code directly into the R console and observe the results. [Expression evaluation]</p>
+<p>Imagine you have collected a few measurements, say the heights (in cm) of three plants: 15 cm, 18 cm, and 20 cm. In R, you can represent these values as a vector using the <code>c()</code> function (which stands for “combine”). Next, we assign those values using the assign symbol, <code>&lt;-,</code> into a variable named <code>plant_heights</code>.</p>
+<p>Type the following into your R console and press Enter:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>plant_heights <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You have just created a variable (or object) named <code>plant_heights</code> that holds the data. We can check the values of the <code>plant_heights</code> object by printing to the console. Simply type the variable name into your R and press Enter, and you should see the values printed back to you:</p>
+<p>You have just created a variable (or object) named <code>plant_heights</code> that holds the data!</p>
+<p>We can check the values of the <code>plant_heights</code> object by printing to the console. Simply type the variable name into your R and press Enter, and you should see the values printed back to you:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plant_heights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -336,9 +357,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>text_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Some'</span>, <span class="st">'text'</span>)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>square_x <span class="ot">&lt;-</span> <span class="cf">function</span>(x){ x<span class="sc">^</span><span class="dv">2</span> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-
 </section>
+</section>
+<section id="extending-r-with-additional-packages" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="extending-r-with-additional-packages"><span class="header-section-number">2.4</span> Extending R with additional packages</h2>
+<p>R’s true power lies in its extensibility through packages. Think of packages as add-ons or plugins that provide specialized functions, tools, and datasets beyond what comes with the initial R installation. In practice, you will find that almost every R project you undertake will involve installing and utilizing several packages, and which is why we mention them from the very beginning. Fortunately, most of these valuable packages are hosted on reputable repositories like CRAN, ensuring their quality and ease of access.</p>
+<section id="installing-packages" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">2.4.1</span> Installing packages</h3>
+<p>This downloads the package to your computer, for later use in R. Think of this as analogous to downloading and installing Microsoft Office on your computer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="loading-package" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="loading-package"><span class="header-section-number">2.4.2</span> Loading package</h3>
+<p>When you need to use an additional R package, you load it into your current session using the <code>library()</code>. Think of this analogous to starting Microsoft Word once you have started your computer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Lots of beginners tend yo have install.packages() + library() in their workflows to its best to attempt clarification now. We attempted to use an analogy of installing Microsoft Office and then opening Microsoft Word. Image instructing someone to always download and install Microsoft Office every time they wish to open Microsoft Word!</p>
+</blockquote>
+</section>
+<section id="package-helpers" class="level3" data-number="2.4.3">
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="package-helpers"><span class="header-section-number">2.4.3</span> Package helpers</h3>
+<p>Given the above, there have been attempts to address this issue using such packages as <code>pacman</code>.</p>
+<p>TODO</p>
+</section>
+</section>
+<section id="rstudio-configuration" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="rstudio-configuration"><span class="header-section-number">2.5</span> RStudio configuration</h2>
+<p>Turn off default</p>
+
+
 </section>
 
 </main> <!-- /main -->

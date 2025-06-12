@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; A gentle first analysis – Introduction to R for data analysis in scientific research</title>
+<title>4&nbsp; Using a data.frame for your data – Introduction to R for data analysis in scientific research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./chapter_4_using_a_dataframe_for_your_first_analysis.html" rel="next">
-<link href="./chapter_2_initial_steps.html" rel="prev">
+<link href="./chapter_5_external_data_and_data_import.html" rel="next">
+<link href="./chapter_3_a_gentle_first_analysis.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_3_a_gentle_first_analysis.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./chapter_4_using_a_dataframe_for_your_first_analysis.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Using a data.frame for your data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,13 +166,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_3_a_gentle_first_analysis.html" class="sidebar-item-text sidebar-link active">
+  <a href="./chapter_3_a_gentle_first_analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapter_4_using_a_dataframe_for_your_first_analysis.html" class="sidebar-item-text sidebar-link">
+  <a href="./chapter_4_using_a_dataframe_for_your_first_analysis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Using a data.frame for your data</span></span></a>
   </div>
 </li>
@@ -204,15 +204,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-scenario" id="toc-the-scenario" class="nav-link active" data-scroll-target="#the-scenario"><span class="header-section-number">3.1</span> The scenario</a></li>
-  <li><a href="#simple-data-entry" id="toc-simple-data-entry" class="nav-link" data-scroll-target="#simple-data-entry"><span class="header-section-number">3.2</span> Simple data entry</a>
+  <li><a href="#creating-a-data.frame" id="toc-creating-a-data.frame" class="nav-link active" data-scroll-target="#creating-a-data.frame"><span class="header-section-number">4.1</span> Creating a data.frame</a>
   <ul class="collapse">
-  <li><a href="#data-visalisation" id="toc-data-visalisation" class="nav-link" data-scroll-target="#data-visalisation"><span class="header-section-number">3.2.1</span> Data visalisation</a></li>
-  <li><a href="#statistical-summaries" id="toc-statistical-summaries" class="nav-link" data-scroll-target="#statistical-summaries"><span class="header-section-number">3.2.2</span> Statistical summaries</a></li>
-  <li><a href="#a-statistical-test" id="toc-a-statistical-test" class="nav-link" data-scroll-target="#a-statistical-test"><span class="header-section-number">3.2.3</span> A statistical test</a></li>
-  <li><a href="#what-your-script-should-look-like" id="toc-what-your-script-should-look-like" class="nav-link" data-scroll-target="#what-your-script-should-look-like"><span class="header-section-number">3.2.4</span> What your script should look like</a></li>
+  <li><a href="#data-visalisation" id="toc-data-visalisation" class="nav-link" data-scroll-target="#data-visalisation"><span class="header-section-number">4.1.1</span> Data visalisation</a></li>
+  <li><a href="#a-statistical-summaries" id="toc-a-statistical-summaries" class="nav-link" data-scroll-target="#a-statistical-summaries"><span class="header-section-number">4.1.2</span> A statistical summaries</a></li>
+  <li><a href="#statistical-test" id="toc-statistical-test" class="nav-link" data-scroll-target="#statistical-test"><span class="header-section-number">4.1.3</span> Statistical test</a></li>
+  <li><a href="#what-your-script-should-look-like" id="toc-what-your-script-should-look-like" class="nav-link" data-scroll-target="#what-your-script-should-look-like"><span class="header-section-number">4.1.4</span> What your script should look like</a></li>
   </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">3.3</span> Summary</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">4.2</span> Summary</a></li>
   </ul>
 </nav>
     </div>
@@ -221,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Using a data.frame for your data</span></h1>
 </div>
 
 
@@ -238,137 +237,198 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This chapter provides a concrete example of R’s usefulness by guiding you through a simple data analysis scenario. You will create an R script, enter data and use R to explore the data, visualise it, create statistical summaries and conduct a statistical test. By the end you will have a concise, reproducible workflow covering all the essential steps you used and a document for others to replicate your work.</p>
-<section id="the-scenario" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="the-scenario"><span class="header-section-number">3.1</span> The scenario</h2>
-<p>You have collected the counts of insects on different individual plants under two experimental treatments - one with an insecticide and another as a control treatment without the insecticide.</p>
-<p>Control treatment: 8, 9, 10, 9, 9, 12, 12, 12, 13, 10</p>
-<p>Insecticide treatment: 2, 5, 2, 0, 2, 3, 4, 4, 2</p>
-<p>Let’s enter these data into R and see how we can easily analyse the data.</p>
+<p>In the previous chapter we stored and worked with our data in different <strong>vectors</strong>. However, we typically organize our data in a tabular data structure called a <strong>data.frame</strong>. This is a rectangular table-like structure containing columns of data, and where the rows are observations of related elements across the columns. In this chapter, we will repeat the analysis from Chapter 4 but with our data in a data.frame, and see how many statistical functions in R expect use of a data.frame as data input for the function.</p>
 <blockquote class="blockquote">
 <p>Create a new R script and copy the code below to the script as you work through the section. Include comments where necessary.</p>
 </blockquote>
-</section>
-<section id="simple-data-entry" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="simple-data-entry"><span class="header-section-number">3.2</span> Simple data entry</h2>
-<p>We use the <code>c()</code> function to create simple <strong>vectors</strong>. Think of these of sets of related values. Keep in mind that this method is suitable for quick data entry, and not the typical method for entering data into R.</p>
+<section id="creating-a-data.frame" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="creating-a-data.frame"><span class="header-section-number">4.1</span> Creating a data.frame</h2>
+<p>We will create a data.frame of the insect count data by entering the data manually. In practice, you would typically have your data stored elsewhere (e.g.&nbsp;Excel spreadsheet or other data file) and import that into R as a data.frame.</p>
+<p>Here again are the counts of insects across the two experiment treatments.</p>
+<p>Control treatment: 8, 9, 10, 9, 9, 12, 12, 12, 13, 10</p>
+<p>Insecticide treatment: 2, 5, 2, 0, 2, 3, 4, 4, 2</p>
+<p>We use the <code>data.frame()</code> function to create a new data.frame, and each argument is a column to be created in the data.frame for which we pass a vector of values. Note that breaking the code among different lines adds in clarity of the code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>treat_ctrl <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">10</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>treat_insect <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>insect_count_data <span class="ot">&lt;-</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">10</span>, </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can verify that the data has been entered correctly into R by either 1) printing the values to the console, or 2) examining the “Environment” panel in RStudio (located in the top-right).</p>
+<p>Now we have a data.frame holding the data together in an object called <code>insect_count_data</code>. Printing it to the console shows the column and row nature of a data.frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>treat_ctrl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>insect_count_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  8  9 10  9  9 12 12 12 13 10</code></pre>
+<pre><code>   Treatment Count
+1       ctrl     8
+2       ctrl     9
+3       ctrl    10
+4       ctrl     9
+5       ctrl     9
+6       ctrl    12
+7       ctrl    12
+8       ctrl    12
+9       ctrl    13
+10      ctrl    10
+11    insect     2
+12    insect     5
+13    insect     2
+14    insect     0
+15    insect     2
+16    insect     3
+17    insect     4
+18    insect     4
+19    insect     2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>treat_insect</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2 5 2 0 2 3 4 4 2</code></pre>
 </div>
-</div>
-<p>Image of RStudio environment <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAADNklEQVR4nO2WLVYrQRBGKwuADcAGYAGAwuFQ4MAEBwYcDgUKBwoHBhwoXFxUsoG4uGQBSRaQ13dyKpDAE5jJJ757zuT09E81p25XD41+vz8NI4OFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIsVIhvV4vtre3S+uLwWBQfiM2NzfL7xfdbjd2d3dL6+8Qc319vXoS+uC3fba2thbm1slKhJCMi4uLSkjZv/TMuL29jeFwWFoRBwcHcXx8XM29vr6uZJCsp6enPyXr9PQ0Op1OvL6+xt7eXumJeH9/j1arVVoRGxsbcXNzE+PxOM7Pz+f73N/f/5BVBysRkpycnMTb21tpRZUQ3j8/P8tbxP7+frTb7Xh4eKgSgxwSybyzs7MyY7bm4+Mjms1mwMvLSxwdHf0QRtzLy8u5kIwNh4eH1d+AIOIRmzYPUupGRginmCRwWoExEkJ1ZDKZ8/j4OF8DVBVja2trlRzWLEOsjEFV3t3dzWMQH4nsTVUyB1iTc+pESghXxdXVVXmbjZFEBOQ1tZxM4FQzl/GctwzjxCLZ7EPMjEEFck3Rl3OAyslqrRMpId9POGO0OcGZKOaQuFyTcPdPJpPqO/EbxMoY+U3KGKxtliuPw4AY5iCZ/pxTJzJCSALvnEranFDu+efn5+qdyuE05/ckyXEeksm1swxxUwgQm32ppmxzZVGBXJm0kU+7blYihI8z1UAC+LeXO5wkZz+nmATSR6I5rY1GI6bT6cK1xBjJ/i6Rdo5nPPZB5M7OTpVk+qk0+nJvoHKotNFotLBPnaxEiPk/FiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiKGhYhhIWJYiBgWIoaFiGEhYliIGBYihoWIYSFiWIgYFiLGPxfY2Bvll5LhAAAAAElFTkSuQmCC" class="img-fluid"></p>
-<section id="data-visalisation" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="data-visalisation"><span class="header-section-number">3.2.1</span> Data visalisation</h3>
-<p>We can use one of R’s various plotting functions to visualize and better understand the patterns within the data. For example, the <code>boxplot()</code> function create boxplots. In this case, we pass the two vectors, one after the other to <code>boxplot()</code>. While this would create a basic plot, we want to add informative axis labels. To label each boxplot along the x-axis, we use the <code>names=</code> argument and provide a vector containing two text values. To label the x-axis and y-axis, we use the <code>ylab=</code> and <code>xlab=</code> arguments, respectively, with single text values of the axis titles. Note the use of quotation marks (<code>"</code>) for these text values.</p>
+<p>Using the <code>str()</code> function displays the structure of the data.frame. This data.frame contains 19 observations and 2 variables (columns). The column names are <code>Treatment</code> and <code>Count</code>. After the colum names we see <code>chr</code> and <code>num</code>, and these tell use the <strong>data types</strong> of the columns. R uses data types to understand what kind of information exists in each column.</p>
+<blockquote class="blockquote">
+<p>Always check the properties of your data once it is in R. We will do it frequently through the book</p>
+</blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(treat_ctrl, treat_insect,</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">'Control'</span>, <span class="st">'Insecticide'</span>),</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Treatment"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">'Insect counts'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(insect_count_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   19 obs. of  2 variables:
+ $ Treatment: chr  "ctrl" "ctrl" "ctrl" "ctrl" ...
+ $ Count    : num  8 9 10 9 9 12 12 12 13 10 ...</code></pre>
+</div>
+</div>
+<p>We can access the data within specific columns using the <code>$</code> symbol. This returns the values as vectors analogous to the vectors we create earlier in this chapter (X.X).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>insect_count_data<span class="sc">$</span>Treatment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ctrl"   "ctrl"   "ctrl"   "ctrl"   "ctrl"   "ctrl"   "ctrl"   "ctrl"  
+ [9] "ctrl"   "ctrl"   "insect" "insect" "insect" "insect" "insect" "insect"
+[17] "insect" "insect" "insect"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>insect_count_data<span class="sc">$</span>Count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  8  9 10  9  9 12 12 12 13 10  2  5  2  0  2  3  4  4  2</code></pre>
+</div>
+</div>
+<section id="data-visalisation" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="data-visalisation"><span class="header-section-number">4.1.1</span> Data visalisation</h3>
+<p>We will again create a boxplot again using the <code>boxplot()</code> function, but time using data.frame columns and a special R notation called a <strong>formula</strong>.</p>
+<blockquote class="blockquote">
+<p>A formula, such as <code>y ~ group</code>, is used where <code>y</code> represents a numeric vector of data values, and <code>group</code> a grouping variable used to split the data. The <strong>first</strong> argument of <code>boxplot()</code> is the formula.</p>
+</blockquote>
+<p>When passing data in this formulaic way, the boxplot labels are automatically populated, meaning we do not need to use the <code>names=</code> argument. Notice that the x- and y-axis labels are derived from the code used in the formula.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(insect_count_data<span class="sc">$</span>Count <span class="sc">~</span> insect_count_data<span class="sc">$</span>Treatment)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="chapter_3_a_gentle_first_analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="chapter_4_using_a_dataframe_for_your_first_analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Many R functions are designed to work with data.frames and include a <code>data=</code> argument to specify an input data.frame to use. In this approach, we provide the data.frame names to the <code>data=</code> argument and then refer to the columns directly by their names within the formula (not using the <code>$</code>). Notice that the default x- and y-axis titles are often more informative when using the formula and data argument. However, you can still customize them using the <code>xlab=</code> and <code>ylab=</code> arguments if desired. While we are here, lets change the colour using <code>col=</code>.</p>
+<blockquote class="blockquote">
+<p>How do we know we can use <code>col=</code> to change the colour? Type <code>?boxplot</code> in the console to see the help file.</p>
+</blockquote>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">'lightblue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="chapter_4_using_a_dataframe_for_your_first_analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="statistical-summaries" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="statistical-summaries"><span class="header-section-number">3.2.2</span> Statistical summaries</h3>
-<p>We can obtain simple statistical summaries with such functions as <code>mean()</code>, <code>median()</code>, <code>sd()</code>, <code>range()</code>. As you might notice, this involves a fair amount of typing. We will learn more efficient methods for obtaining these summaries later.</p>
+<section id="a-statistical-summaries" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="a-statistical-summaries"><span class="header-section-number">4.1.2</span> A statistical summaries</h3>
+<p>There are also functions that are helpful for summarizing data within a data.frame. The <code>aggregate()</code> function takes a formula as its first argument to describe a response and grouping structure, followed by the <code>data=</code> argument to specify the data.frame, and a <code>FUN=</code> argument to indicate the statistical function to apply. Note that the statistical function is provided without parentheses within the <code>FUN=</code> argument (e.g., <code>FUN=mean</code>, not <code>FUN=mean()</code>).</p>
+<p>Again, you might notice that this involves a fair amount repeated typing. The output is more concise than the that from earlier in the chapter (X.X)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(treat_ctrl)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(treat_insect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.4
-[1] 2.666667</code></pre>
+<pre><code>  Treatment     Count
+1      ctrl 10.400000
+2    insect  2.666667</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(treat_ctrl)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(treat_insect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> sd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.712698
-[1] 1.5</code></pre>
+<pre><code>  Treatment    Count
+1      ctrl 1.712698
+2    insect 1.500000</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(treat_ctrl)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(treat_insect)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10
-[1] 9</code></pre>
+<pre><code>  Treatment Count
+1      ctrl    10
+2    insect     9</code></pre>
 </div>
 </div>
 </section>
-<section id="a-statistical-test" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="a-statistical-test"><span class="header-section-number">3.2.3</span> A statistical test</h3>
-<p>We can use a <code>t.test()</code> to statistically compare the means of values from the two treatment groups. We pass the two vectors, one after the other, to the <code>t.test()</code> function to conduct a t-test. We include the argument <code>var.equal = TRUE</code> for a traditional t.test.</p>
-<p>The output of <code>t.test()</code> provides various information about the statistics involved in a t-test. The t statistic, degrees of freedom and p value are present. The p-value (4.177e-08) is less than 0.05, leading us to conclude that there is a statistically significant difference between the means of the two treatment groups. The mean of the control group (mean of x, 10.4) is greater than the mean of the insecticide treatment (mean of y, 2.67).</p>
+<section id="statistical-test" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="statistical-test"><span class="header-section-number">4.1.3</span> Statistical test</h3>
+<p>The <code>t.test()</code> function is also designed to work with data.frames. Following the function structures above, here’s how you would apply it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(treat_ctrl, treat_insect, <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-    Two Sample t-test
+    Welch Two Sample t-test
 
-data:  treat_ctrl and treat_insect
-t = 10.415, df = 17, p-value = 8.508e-09
-alternative hypothesis: true difference in means is not equal to 0
+data:  Count by Treatment
+t = 10.491, df = 16.993, p-value = 7.664e-09
+alternative hypothesis: true difference in means between group ctrl and group insect is not equal to 0
 95 percent confidence interval:
- 6.166701 9.299966
+ 6.178112 9.288555
 sample estimates:
-mean of x mean of y 
-10.400000  2.666667 </code></pre>
+  mean in group ctrl mean in group insect 
+           10.400000             2.666667 </code></pre>
 </div>
 </div>
 </section>
-<section id="what-your-script-should-look-like" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="what-your-script-should-look-like"><span class="header-section-number">3.2.4</span> What your script should look like</h3>
-<p>Having worked through the section and copying the code across to your own computer, your script should resemble the code below. If all is good, save script to your computer. Well done! You just created your first analysis script.</p>
+<section id="what-your-script-should-look-like" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="what-your-script-should-look-like"><span class="header-section-number">4.1.4</span> What your script should look like</h3>
+<p>Having worked through the section and copying the code across to your own computer, your script should resemble the code below. I have only included the code that would go into the final analysis script, and removed some of the demonstration code. Save script to your computer. Well done! You just conducted an analysis using the most import data structure in R - the data.frame.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data input</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>treat_ctrl <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">10</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>treat_insect <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Data check</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>treat_ctrl</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>treat_insect</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Data visualisation</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(treat_ctrl, treat_insect,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">names =</span> <span class="fu">c</span>(<span class="st">'Control'</span>, <span class="st">'Insecticide'</span>),</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">'Insect counts'</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Data summaries</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(treat_ctrl)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(treat_insect)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(treat_ctrl)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(treat_insect)</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(treat_ctrl)</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(treat_insect)</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparison of means between treaments using t-test</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(treat_ctrl, treat_insect <span class="at">var.equal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data input</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>insect_count_data <span class="ot">&lt;-</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Treatment =</span> <span class="fu">c</span>(<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,<span class="st">'ctrl'</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                  <span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>,<span class="st">'insect'</span>),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">Count =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">10</span>, </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>              <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Data check</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>insect_count_data</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># There are 19 rows of data</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Treatment is character type</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Count is numeric type</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(insect_count_data)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Data visualisation</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data,</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">'lightblue'</span>)</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Data summaries</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> mean)</span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> sd)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data, <span class="at">FUN =</span> length)</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistical test</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Count <span class="sc">~</span> Treatment, <span class="at">data =</span> insect_count_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="summary" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">3.3</span> Summary</h2>
-<p>This chapter provided a hands-on experience with R for basic data analysis, demonstrating input raw data and [generate insights]. You learned a fundamental way to handle data in R: using vectors for simple, quick entry. Through a practical example of insect counts under different treatments, you explored key steps in a data analysis workflow: data input, data visualization using boxplots, calculating basic statistical summaries like the mean, standard deviation, and number of values (length), and performing a statistical test (t-test) to compare group means. You recorded all the steps in an R script - a recipe for the analysis workfllow - and which in a fundamental unit of reproducible analysis. In the next chapter, we will conduct the same analysis but using R preferred tabular data structure - the data.frame.</p>
+<section id="summary" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="summary"><span class="header-section-number">4.2</span> Summary</h2>
+<p>This chapter continued to provide a hands-on experience with R for basic data analysis. You learned another fundamental way to handle and organise data in R: using a data.frame — R’s preferred tabular data structure. You gained familiarity with R’s formula notation for efficient data manipulation and visualization within data.frames. This foundational understanding of R scripts and data structures prepares you fo r more advanced analyses, particularly for importing data from external files, which will be covered in the next chapter.</p>
 
 
 </section>
@@ -796,13 +856,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./chapter_2_initial_steps.html" class="pagination-link" aria-label="Initial steps">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Initial steps</span></span>
+      <a href="./chapter_3_a_gentle_first_analysis.html" class="pagination-link" aria-label="A gentle first analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">A gentle first analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./chapter_4_using_a_dataframe_for_your_first_analysis.html" class="pagination-link" aria-label="Using a data.frame for your data">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Using a data.frame for your data</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./chapter_5_external_data_and_data_import.html" class="pagination-link" aria-label="External data and data import">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">External data and data import</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
