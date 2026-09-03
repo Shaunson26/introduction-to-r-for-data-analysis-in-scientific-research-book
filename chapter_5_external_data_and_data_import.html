@@ -221,7 +221,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#r-data-files" id="toc-r-data-files" class="nav-link" data-scroll-target="#r-data-files"><span class="header-section-number">5.3</span> R data files</a></li>
   <li><a href="#other-data-types" id="toc-other-data-types" class="nav-link" data-scroll-target="#other-data-types"><span class="header-section-number">5.4</span> Other data types</a></li>
-  <li><a href="#exploring-your-imported-data" id="toc-exploring-your-imported-data" class="nav-link" data-scroll-target="#exploring-your-imported-data"><span class="header-section-number">5.5</span> Exploring Your Imported Data</a></li>
+  <li><a href="#exploring-your-imported-data" id="toc-exploring-your-imported-data" class="nav-link" data-scroll-target="#exploring-your-imported-data"><span class="header-section-number">5.5</span> Exploring Your Imported Data</a>
+  <ul class="collapse">
+  <li><a href="#whats-the-difference-data.frame-vs.-tibble" id="toc-whats-the-difference-data.frame-vs.-tibble" class="nav-link" data-scroll-target="#whats-the-difference-data.frame-vs.-tibble"><span class="header-section-number">5.5.1</span> What’s the Difference: data.frame vs.&nbsp;tibble?</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -513,10 +516,121 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 </section>
 <section id="exploring-your-imported-data" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="exploring-your-imported-data"><span class="header-section-number">5.5</span> Exploring Your Imported Data</h2>
-<p>Functions for inspecting data frames: head(), tail(), str(), summary(), dim(), colnames().</p>
-<p>Accessing variables (columns) using $ notation.</p>
+<pre><code>Functions for inspecting data frames: head(), tail(), str(), summary(), dim(), colnames().
+Accessing variables (columns) using \$ notation.</code></pre>
+<p>Understanding the structure and properties of your imported data will inform your subsequent analysis. We will cover both base R functions and tidyverse approaches, highlighting the differences in output, particularly between data.frame and tibble objects</p>
+<section id="whats-the-difference-data.frame-vs.-tibble" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="whats-the-difference-data.frame-vs.-tibble"><span class="header-section-number">5.5.1</span> What’s the Difference: data.frame vs.&nbsp;tibble?</h3>
+<p>As you’ve learned, <code>readr</code> and <code>readxl</code> typically import data as a tibble. A tibble is a modern reimagining of the data.frame, designed to be more user-friendly and consistent. While both store tabular data, there are key differences in how they behave and how they are displayed, especially during exploration.</p>
+<p>We imported the <code>penguins_csv</code> as a <strong>tibble</strong> and print it to the console to check it contents. Doing this again but now explaining what we see</p>
+<ul>
+<li><code># A tibble: 344 × 8</code> we have a tibble with 344 rows and 8 columns</li>
+<li><code>species</code>, <code>island</code>, <code>...</code> are the column names</li>
+<li><code>&lt;chr&gt;</code> and <code>&lt;dbl&gt;</code> under the column names describe each column data type - character and (numeric) double</li>
+<li>The first 10 rows of the data</li>
+<li><code># ℹ 334 more rows</code> that there are more rows not sown.</li>
+</ul>
+<p>Thus a tibble provides a concise summary of the data highlighting all the things we should check about our data once it has been imported.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>penguins_csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;chr&gt;   &lt;chr&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;       &lt;dbl&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;chr&gt;, year &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>It is possible that you may have in hand a regular data.frame. If you were to print this to the console, you would see much less informative information and many more rows of data. In the following example I limited the data.frame printing to 10 rows, but it would otherwise print the first 1000 rows by default, flooding your screen.</p>
+<p>Note that we can see the column names and their values, but that the data.frame dimensions and column data types are not explicitly shown.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>penguins_csv_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(penguins_csv)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>penguins_csv_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   species    island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+1   Adelie Torgersen           39.1          18.7               181        3750
+2   Adelie Torgersen           39.5          17.4               186        3800
+3   Adelie Torgersen           40.3          18.0               195        3250
+4   Adelie Torgersen             NA            NA                NA          NA
+5   Adelie Torgersen           36.7          19.3               193        3450
+6   Adelie Torgersen           39.3          20.6               190        3650
+7   Adelie Torgersen           38.9          17.8               181        3625
+8   Adelie Torgersen           39.2          19.6               195        4675
+9   Adelie Torgersen           34.1          18.1               193        3475
+10  Adelie Torgersen           42.0          20.2               190        4250
+11  Adelie Torgersen           37.8          17.1               186        3300
+12  Adelie Torgersen           37.8          17.3               180        3700
+      sex year
+1    male 2007
+2  female 2007
+3  female 2007
+4    &lt;NA&gt; 2007
+5  female 2007
+6    male 2007
+7  female 2007
+8    male 2007
+9    &lt;NA&gt; 2007
+10   &lt;NA&gt; 2007
+11   &lt;NA&gt; 2007
+12   &lt;NA&gt; 2007
+ [ reached 'max' / getOption("max.print") -- omitted 332 rows ]</code></pre>
+</div>
+</div>
+<p>We would use these functions to query our data.frame properties.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(penguins_csv_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   344 obs. of  8 variables:
+ $ species          : chr  "Adelie" "Adelie" "Adelie" "Adelie" ...
+ $ island           : chr  "Torgersen" "Torgersen" "Torgersen" "Torgersen" ...
+ $ bill_length_mm   : num  39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num  18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: num  181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : num  3750 3800 3250 NA 3450 ...
+ $ sex              : chr  "male" "female" "female" NA ...
+ $ year             : num  2007 2007 2007 2007 2007 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins_csv_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  species    island bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+1  Adelie Torgersen           39.1          18.7               181        3750
+2  Adelie Torgersen           39.5          17.4               186        3800
+3  Adelie Torgersen           40.3          18.0               195        3250
+4  Adelie Torgersen             NA            NA                NA          NA
+5  Adelie Torgersen           36.7          19.3               193        3450
+6  Adelie Torgersen           39.3          20.6               190        3650
+     sex year
+1   male 2007
+2 female 2007
+3 female 2007
+4   &lt;NA&gt; 2007
+5 female 2007
+6   male 2007</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(penguins_csv_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 344   8</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(penguins_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "species"           "island"            "bill_length_mm"   
+[4] "bill_depth_mm"     "flipper_length_mm" "body_mass_g"      
+[7] "sex"               "year"             </code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
