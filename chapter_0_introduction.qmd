@@ -1,17 +1,41 @@
-# Introduction
+# Introduction {.unnumbered}
 
 Welcome paragraph
 
 # What you will learn
 
-- Chapter layout
+
+- Chapter 1 - What is R and RStudio
+- Chapter 2 - Initial steps with R and RStudio
+- Chapter 3 - A general first analysis
+- Chapter 4 - Using a data.frame for your first analysis
+- Chapter 5 - Data import
+- Chapter 6 - Data transformation
+- Chapter 7 - Visualising data
+- Chapter 8 - Basic statistical testing
+- Chapter 9 - Reproducible reports with RMarkdown / Quarto
+- Chapter n - git / GitHub
+
 - Some notes
 
 # What you will not learn
 
 - Not aimed at programming, strict data science
 
-# Anything else
+# Preparing your computer for following the book
 
+## Install R
 
+Install here
 
+## Install RStudio
+
+Install there
+
+## Install git
+
+Install everywhere
+
+## Create a remote git account e.g. GitHub
+
+Will you do this?

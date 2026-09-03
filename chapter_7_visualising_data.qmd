@@ -1,0 +1,27 @@
+## The Grammar of Graphics and ggplot2
+
+Introducing the fundamental components of a ggplot2 plot: data, aesthetics, geometry, statistics, facets, themes.
+
+Emphasize the layered approach to building plots.
+
+# Creating a publication ready plot
+
+Adding titles, labels, and legends.
+
+Modifying axes and scales.
+
+Choosing colors and themes.
+
+Saving plots to different file formats (.png, .pdf, .tiff).
+
+# Other plot type (brief)
+
+Scatter plots for relationships between continuous variables (geom_point()).
+
+Line plots for trends over time or continuous variables (geom_line()).
+
+Bar charts and column charts for comparing categorical data (geom_bar(), geom_col()).
+
+Box plots and violin plots for comparing distributions (geom_boxplot(), geom_violin()).
+
+Histograms and density plots for visualizing distributions of single variables (geom_histogram(), geom_density()).

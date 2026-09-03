@@ -6,3 +6,7 @@
 .quarto
 
 /.quarto/
+99-book-layout.qmd
+/r-package-library/
+
+**/*.quarto_ipynb

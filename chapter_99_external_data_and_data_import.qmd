@@ -1,0 +1,287 @@
+# External data and data import
+
+Data files come in various formats, and understanding these formats is crucial for efficient data import into R. While R can handle a multitude of data types, some are far more prevalent in the scientific community. Scientists frequently work with structured data, where observations (rows) and variables (columns) are clearly defined, and this is what we will discuss here. This chapter will introduce you to the most common formats you will encounter, briefly explain their structure, why they are widely used and finally how to import them in R.
+
+```         
+need to mention the woo paper about data structure..
+```
+
+## Understanding common data formats
+
+We start our discussion by examining common data formats encountered. Unconventionally, we will start with Excel workbooks
+
+### Microsoft Excel Workbooks (.xlsx)
+
+Excel workbooks are a pervasive format, particularly in laboratories and smaller research groups, due to their user-friendly interface and powerful built-in functionalities. Excel files contain multiple worksheets, each containing cells of data that are typically organized as a grid of rows and columns.
+
+When we discuss the benefits of Excel for storing data and use in R, we only want to focus on it's user-friendly interface for manual data entry and organisation, and it's ability to organise related data in different worksheets of the same file.
+
+It's ability to provide free-form data structure (not necessarily in a grid of rows and columns) and cell formatting options may seem useful for data analysis *in Excel*, but this often creates messy data with inconsistencies, merged cells, random notes, and other non-standard formatting that make programmatic import into R challenging.
+
+Our suggestion for keeping raw data in Excel files is to ensure that 1) raw data is kept in a consistent tabular structure with rows and columns, 2) no additional/subsequent analytical information e.g. means of groups/rows or cell formatting is included and 3) each individual dataset is kept in a separate spreadsheet.
+
+#### Advantages {.unnumbered}
+
+- User-friendly interface: easy manual data entry and organization.
+
+- Multiple worksheets: allows for organizing related data into different tabs within a single file.
+
+- Formatting options: Enables visual organization and presentation of data.
+
+#### Disadvantages {.unnumbered}
+
+- Potential for "messy data": the flexibility of Excel can lead to poorly structured data, inconsistencies, merged cells, or Excel specific formatting that can make import into R challenging.
+
+- Proprietary format: requires additional R packages and can sometimes be slower or more resource-intensive than reading plain text files.
+
+- Scalability issues: for very large datasets, Excel can become slow and unwieldy.
+
+### Text Delimited Files (.csv, .tsv, .txt)
+
+Text delimited files such as Comma-Separated Values (CSV) and Tab-Separated Values (TSV) are arguably the most common and versatile plain-text format for tabular data, and their simplicity is their strength. These are simply text files where data values are separated by a **delimiter** such as a comma `,` tab , pipe `|` or other character, and each row represents a new line of data.
+
+If you were to open a `.csv` or `.tsv` file in a text editor, you would see something like the following
+
+#### CSV {.unnumbered}
+
+``` r
+SampleID,Treatment,Replicate,Measurement1,Measurement2
+A1,Control,1,12.5,3.2
+A2,Treated,1,15.1,4.5
+B1,Control,2,11.9,3.0
+```
+
+#### TSV {.unnumbered}
+
+``` r
+SampleID    Treatment   Replicate   Measurement1    Measurement2
+A1  Control 1   12.5    3.2
+A2  Treated 1   15.1    4.5
+B1  Control 2   11.9    3.0
+```
+
+#### Advantages {.unnumbered}
+
+- Universally supported: nearly all spreadsheet software, programming languages, and databases can read and write text files.
+
+- Human-readable: you can open and inspect a file with any basic text editor, making it easy to spot errors or understand its structure.
+
+- Lightweight: Text files are typically small in size compared to more complex formats like Excel. However, very large files can be common.
+
+#### Disadvantages {.unnumbered}
+
+- No Formatting: text files store only data, not formatting like data type, or software specific formats (fonts, colors, cell styles).
+
+### R's own data files
+
+R has it's own native data files commonly ending in `.rds`, `.RData` or `.rda`. These are binary files specifically designed to store one or more R objects. This format is highly efficient for saving and loading data within the R environment, preserving data types and structures precisely. They are excellent for internal R workflows due to their efficiency and perfect preservation of R objects, however, given they are proprietary to R, they cannot be directly opened or read by other software applications.
+
+### Other data types and sources
+
+Despite the popularity of Excel and text data files, it is quite possible that you may need to handle data originating from other sources. You may need to extract data from specialized instruments or sensors that produce data in unique binary or other proprietary formats. However, these tend to have software that allow you to further export the data in a tabular structure in a text data file. Data may also be shared to you from specialized statistical software packages like SAS, SPSS, or Stata, each with its own proprietary file format. R boasts a rich ecosystem of packages for importing virtually any data type and it should be straightforward to import these data into R.
+
+What can differentiate some of these different data files from simple text or Excel files is often the presence of metadata. This additional data can include information about variable types (e.g., specifying a column as numeric, categorical, or date), formatting instructions (e.g., how dates should be displayed), missing value codes, and even labels for categorical levels (indeed, exporting such data from these programs to text data files would lead to removal of the metadata as text files store only data). This valuable metadata is often preserved when importing such data into R but may require you to examine the help documentation of the specific function to understand how it has been incorporated into the imported data.frame (most likely as a data.frame **attribute**).
+
+## Importing common data formats into R
+
+While R has built-in functions for basic data import, the `tidyverse` suite of packages offers more efficient and user-friendly tools. For common text-based files like CSV (Comma Separated Values) and TSV (Tab Separated Values), we will use the `readr` package. For Excel files (.xls and .xlsx), the `readxl` package is your go-to. These packages are designed to import clean, tabular data directly into a **tibble**, a modern and enhanced version of R's traditional data.frame.
+
+### Packages
+
+> These should have been installed following previous chapter XX
+
+To use the functions in these packages, we must load them into our R session.
+
+```{r}
+# Load the necessary tidyverse packages
+library(readr)
+library(readxl)
+```
+
+### Our data
+
+In our working directory, we have a folder called `data/` which contains various data files for use. I exported the data from the `palmerpenguins` R data package into various formats for demonstration.
+
+```{r, eval=F, echo = F}
+fs::dir_tree(regexp = '')
+```
+
+``` r
+| Root folder
+├── data
+│   ├── penguins.csv
+│   ├── penguins.rds
+│   ├── penguins.tsv
+│   └── penguins.xlsx
+| ...
+```
+
+### Text delimited files
+
+The package **readr** comes with a number of functions to import different text delimited files. `read_csv()`, `read_tsv()` and `read_delim()` will allow you to import the most common text delimited files. All of the `read_*` functions require the file path to your file provided as a string.
+
+```{r, eval=F}
+penguins_csv <- read_csv("data/penguins.csv")
+```
+
+Once the data is imported, pay close attention to the information printed in your console. This output offers a quick and vital check to confirm that the data was interpreted correctly. It provides key details about the import, including:
+
+- The number of rows and columns in your dataset.
+- The delimiter type that was identified (e.g., a comma, which is standard for CSVs).
+- The data types of each column (e.g., numeric - `dbl`, character - `chr`, date).
+
+This immediate feedback is incredibly helpful for verifying a successful import and for pinpointing any areas where you might need to adjust the import options to ensure optimal data integrity.
+
+In the following example, we import `penguins.csv` and see that there are
+
+- 344 rows and 8 columns
+- The delimiter is `,`
+- 3 columns are `chr` and 5 are `dbl`, and their names
+
+If this was what we expected, then we are ready to work with the data in the `penguins_csv` object
+
+```{r}
+penguins_csv <- read_csv("data/penguins.csv")
+penguins_csv
+```
+
+#### Other examples {.unnumbered}
+
+```{r, eval = F}
+# Importing a TSV file
+penguins_tsv <- read_tsv("data/penguins.tsv")
+
+# Using the read_delim() function and specifying the delimiter
+penguins_csv <- readr::read_delim("data/penguins.csv", delim = ",")
+penguins_tsv <- readr::read_delim("data/penguins.tsv", delim = "\t")
+```
+
+### Excel
+
+The `read_excel()` function from the **readxl** package is used to import Excel worksheets from an Excel file. The function requires a file path to your Excel file, provided as a string. Unfortunately, there is no information printed to the console about the import of the file like with the **readr** import functions.
+
+```{r}
+penguins_xlsx <- read_excel("data/penguins.xlsx")
+penguins_xlsx
+```
+
+By default it will import the the first sheet, but we can specify which sheet to import using the `sheet=` argument. To see what sheet names exist in an excel file we use the `excel_sheets()` function.
+
+```{r}
+readxl::excel_sheets("data/penguins.xlsx")
+# Importing a specific sheet from an Excel file
+penguins_adelie_xlsx <- read_excel("data/penguins.xlsx", sheet = "Adelie")
+penguins_adelie_xlsx
+```
+
+### Fine-tuning data import
+
+Importing clean data into R is relatively simple task, however most data importing functions, including those in `readr` and `readxl`, offer additional options to fine-tune data import given that not all data is the same and data can be quite messy.
+
+This includes specifying details such as delimiters, missing value indicators, column types, row skipping and max number of rows to import.
+
+It is a good practice to be proactive about data cleaning during data import and this can have many beneficial outcomes. By addressing potential data inconsistencies and structural issues at the source, it will prevent common errors downstream, saving significant time and effort that would otherwise be spent on post-import data remediation.
+
+#### Missing value indicators
+
+R generally expects that an empty cell value means it is missing. However, this can be any value depending on the data source. `readr` and `readxl` import functions use the `na=` argument to specify what values should be considered missing values.
+
+```{r, eval = F}
+read_csv("data/penguins.csv", na = c('', "N/A"))
+```
+
+#### Skipping comment lines
+
+The initial rows of a data file may include comments about the data. These generally start with a hash `#` character. `readr` and `readxl` import functions use the `comment=` argument to specify what character is considered the comment character and to skip lines starting with that character. Another argument `skip=` specifies the minimum number of rows to skip before reading any data.
+
+```{r, eval = F}
+read_csv("data/penguins.csv", comment = "#")
+read_csv("data/penguins.csv", skip = 2)
+```
+
+#### Importing a maximum number of rows
+
+With very large datasets, it may be wise to initially import only a few rows to inspect the data. `readr` and `readxl` import functions use the argument `n_max=` to specify the maximum number of data rows to read.
+
+```{r, eval = F}
+read_csv("data/penguins.csv", n_max = 10)
+```
+
+## R data files
+
+For R data files, specifically `.rds` files, we continue to use the `readr` package and the function `read_rds()`. No import information is provided when importing an `.rds` file
+
+```{r, eval = F}
+penguins_rds <- readr::read_rds('data/penguins.rds')
+```
+
+For `.Rdata` and `.rda` files, we use the R function `load()`. These files have saved R objects including their name so there is no assigning of the result and we must observe what objects were loaded into the current R session.
+
+```{r, eval = F}
+load('data/example.Rdata')
+```
+
+## Other data types
+
+Beyond these common formats, R boasts a rich ecosystem of packages for importing virtually any data type. This includes packages to read data from other statistical software (like SPSS, Stata, and SAS), directly from Google Sheets, or by connecting to various types of databases. While we won't delve into these here, be aware that R's integration capabilities extend far and wide within the IT landscape, allowing it to seamlessly handle diverse data sources and types.
+
+```{r, eval = F}
+library(haven)
+sas_data <- haven::read_sas("sasdata")
+sas_data <- haven::read_spss("spss")
+library(googlesheets4)
+googlesheets4::read_sheet("url")
+library(DBI)
+library(odbc)
+DBI::dbConnect(odbc::odbc(), host='..', )
+```
+
+## Exploring Your Imported Data
+
+```         
+Functions for inspecting data frames: head(), tail(), str(), summary(), dim(), colnames().
+Accessing variables (columns) using \$ notation.
+```
+
+Understanding the structure and properties of your imported data will inform your subsequent analysis. We will cover both base R functions and tidyverse approaches, highlighting the differences in output, particularly between data.frame and tibble objects
+
+### What's the Difference: data.frame vs. tibble?
+
+As you've learned, `readr` and `readxl` typically import data as a tibble. A tibble is a modern reimagining of the data.frame, designed to be more user-friendly and consistent. While both store tabular data, there are key differences in how they behave and how they are displayed, especially during exploration.
+
+We imported the `penguins_csv` as a **tibble** and print it to the console to check it contents. Doing this again but now explaining what we see
+
+- `# A tibble: 344 × 8` we have a tibble with 344 rows and 8 columns
+- `species`, `island`, `...` are the column names
+- `<chr>` and `<dbl>` under the column names describe each column data type - character and (numeric) double
+- The first 10 rows of the data
+- `# ℹ 334 more rows` that there are more rows not sown.
+
+Thus a tibble provides a concise summary of the data highlighting all the things we should check about our data once it has been imported.
+
+```{r}
+penguins_csv
+```
+
+It is possible that you may have in hand a regular data.frame. If you were to print this to the console, you would see much less informative information and many more rows of data. In the following example I limited the data.frame printing to 10 rows, but it would otherwise print the first 1000 rows by default, flooding your screen.
+
+Note that we can see the column names and their values, but that the data.frame dimensions and column data types are not explicitly shown.
+
+```{r, echo = F}
+maxPrint <- getOption('max.print')
+options(max.print = 100)
+```
+
+```{r}
+penguins_csv_df <- as.data.frame(penguins_csv)
+penguins_csv_df
+```
+
+We would use these functions to query our data.frame properties.
+
+```{r}
+str(penguins_csv_df)
+head(penguins_csv_df)
+dim(penguins_csv_df)
+names(penguins_csv)
+```

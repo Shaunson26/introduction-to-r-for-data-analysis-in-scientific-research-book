@@ -1,0 +1,203 @@
+# Importing data into R
+
+You've experienced the power of R for immediate analysis. But we typed our data directly into a script and this is a very inefficient method of getting data into R. As most data originates from external sources: meticulously organized spreadsheets, laboratory instruments, online databases, survey platforms, or other collaborators - we must import that data, and correctly, into R.
+
+```
+- import of different file type requires different packages/functions
+- common type can be natively imported in R, but we do use better crafted packages/functions
+```
+We will examine importing tabular data in this chapter, but we hope it prepares you for importing other types of data whether it be, for example, image, spatial or genomic data - generally, there is an *import function* with it's *options* to get the data correctly into R.
+
+Ideally you would simply import your data and move on to the next analysis step, and in many cases, this will be true. But in other cases you may need to mindful of the data you are importing and whether you need to oversee and guide the import function to get your data into R correctly ensuring it's ready for its anaytical journey.
+
+As a last point, if you are the creator of your own data (created a spreadsheet), then structuring into a machine readable format is a suggested approach. This will streamline data import (and not only for R). For guidance in how to best structure tabular data we suggest the paper ["Data Organiszation in Spreadsheets" by Broman, K. W. & Woo, K. H. (2018)](https://doi.org/10.1080/00031305.2017.1375989)
+
+## Common data formats
+
+Scientific data often arrives in one of two prevalent formats: structured spreadsheets (like Excel) or simple text files. Each has its strengths, and R provides robust tools to handle both.
+
+### Excel Spreadsheets (.xlsx, .xls)
+
+The ubiquitous spreadsheet. Excel workbooks are a pervasive format, particularly in laboratories and smaller research groups, due to their user-friendly interface and powerful built-in functionalities. Excel files contain multiple worksheets, each containing cells of data that are typically organized as a grid of rows and columns.
+
+It's ability to provide free-form data structure (not necessarily in a grid of rows and columns) and cell formatting options may seem useful for data analysis *in Excel*, but this often creates messy data with inconsistencies, merged cells, random notes, and other non-standard formatting that make programmatic import into R challenging.
+
+If you have data in Excel files ensure that 1) raw data is kept in a consistent tabular structure with rows and columns, 2) no additional/subsequent analytical information e.g. means of groups/rows or cell formatting is included and 3) each individual dataset is kept in a separate spreadsheet.
+
+### Text Files (.csv, .tsv, .txt)
+
+Often, scientific instruments or online repositories provide data in simple text files – perhaps comma-separated values (CSV) or tab-separated values (TSV). While seemingly basic, these formats are incredibly versatile and form the backbone of much data exchange. These are simply text files where data values are separated by a **delimiter** such as a comma `,` tab , pipe `|` or other character, and each row represents a new line of data.
+
+If you were to open a `.csv` or `.tsv` file in a text editor, you would see something like the following
+
+#### CSV {.unnumbered}
+
+``` r
+SampleID,Treatment,Replicate,Measurement1,Measurement2
+A1,Control,1,12.5,3.2
+A2,Treated,1,15.1,4.5
+B1,Control,2,11.9,3.0
+```
+
+#### TSV {.unnumbered}
+
+``` r
+SampleID    Treatment   Replicate   Measurement1    Measurement2
+A1  Control 1   12.5    3.2
+A2  Treated 1   15.1    4.5
+B1  Control 2   11.9    3.0
+```
+
+## The **readxl** and **readr** packages: your data import toolkit
+
+While R has built-in functions for data import, the **readxl** and **readr** packages (both part of the powerful tidyverse collection) offer superior speed, consistency, and a more intuitive experience. They are designed with the modern R user in mind, providing robust solutions for even challenging import scenarios. The packages also import data into a **tibble**, a modern and enhanced version of R's traditional data.frame.
+
+> These should have been installed following previous chapter XX
+
+To use the functions in these packages, we must load them into our R session.
+
+```{r}
+# Load the necessary tidyverse packages
+library(readr)
+library(readxl)
+```
+
+### Our data
+
+In our working directory, we have a folder called `data/` which contains various data files for use. I exported the data from the `palmerpenguins` R data package into various formats for demonstration.
+
+```{r, eval=F, echo = F}
+fs::dir_tree(regexp = '')
+```
+
+``` r
+| Root folder
+├── data
+│   ├── penguins.csv
+│   ├── penguins.rds
+│   ├── penguins.tsv
+│   └── penguins.xlsx
+| ...
+```
+
+### Text delimited files
+
+The package **readr** comes with a number of functions to import different text delimited files. `read_csv()`, `read_tsv()` and `read_delim()` will allow you to import the most common text delimited files. All of the `read_*` functions require the file path to your file provided as a string.
+
+```{r, eval=F}
+penguins_csv <- read_csv("data/penguins.csv")
+```
+
+Once the data is imported, pay close attention to the information printed in your console. This output offers a quick and vital check to confirm that the data was interpreted correctly. It provides key details about the import, including:
+
+-   The number of rows and columns in your dataset.
+-   The delimiter type that was identified (e.g., a comma, which is standard for CSVs).
+-   The data types of each column (e.g., numeric - `dbl`, character - `chr`, date).
+
+This immediate feedback is incredibly helpful for verifying a successful import and for pinpointing any areas where you might need to adjust the import options to ensure optimal data integrity.
+
+In the following example, we import `penguins.csv` and see that there are
+
+-   344 rows and 8 columns
+-   The delimiter is `,`
+-   3 columns are `chr` and 5 are `dbl`, and their names
+
+If this was what we expected, then we are ready to work with the data in the `penguins_csv` object
+
+```{r}
+penguins_csv <- read_csv("data/penguins.csv")
+penguins_csv
+```
+
+#### Other examples {.unnumbered}
+
+```{r, eval = F}
+# Importing a TSV file
+penguins_tsv <- read_tsv("data/penguins.tsv")
+
+# Using the read_delim() function and specifying the delimiter
+penguins_csv <- readr::read_delim("data/penguins.csv", delim = ",")
+penguins_tsv <- readr::read_delim("data/penguins.tsv", delim = "\t")
+```
+
+### Excel
+
+The `read_excel()` function from the **readxl** package is used to import Excel worksheets from an Excel file. The function requires a file path to your Excel file, provided as a string. Unfortunately, there is no information printed to the console about the import of the file like with the **readr** import functions.
+
+```{r}
+penguins_xlsx <- read_excel("data/penguins.xlsx")
+penguins_xlsx
+```
+
+By default it will import the the first sheet, but we can specify which sheet to import using the `sheet=` argument. To see what sheet names exist in an excel file we use the `excel_sheets()` function.
+
+```{r}
+readxl::excel_sheets("data/penguins.xlsx")
+# Importing a specific sheet from an Excel file
+penguins_adelie_xlsx <- read_excel("data/penguins.xlsx", sheet = "Adelie")
+penguins_adelie_xlsx
+```
+
+### Fine-tuning data import - gaining control
+
+Importing clean data into R is relatively simple task, however most data importing functions, including those in `readr` and `readxl`, offer additional options to fine-tune data import given that different data has specific quirks and data can be quite messy. This includes specifying details such as delimiters, missing value indicators, column types, row skipping and max number of rows to import. It is a good practice to be proactive about correct data import as it ensures your data is import exactly how intend, saving significant time and effort that would otherwise be spent on post-import data remediation.
+
+> Be sure to read the help documentation of your chosen import function.
+
+#### Missing value indicators
+
+R generally expects that an empty cell value means it is missing. However, this can be any value depending on the data source. `readr` and `readxl` import functions use the `na=` argument to specify what values should be considered missing values.
+
+```{r, eval = F}
+read_csv("data/penguins.csv", na = c('', "N/A"))
+```
+
+#### Importing a maximum number of rows
+
+With very large datasets, it may be wise to initially import only a few rows to inspect the data. `readr` and `readxl` import functions use the argument `n_max=` to specify the maximum number of data rows to read.
+
+```{r, eval = F}
+read_csv("data/penguins.csv", n_max = 10)
+```
+
+## Verifying your import
+
+You have run your import command and your data is now in R. But our job isn't done yet. We need to ensure R has correctly interpreted our data and that no surprises are lurking. Think of it as a pre-flight check before your analytical journey.
+
+What are we checking for? We're primarily concerned with:
+
+-   Correctness: Did all rows and columns come in?
+
+-   Data Types: Are numbers actually numbers? Are dates dates? Is categorical data treated as such? Incorrect data types are a silent killer of analyses!
+
+-   Missing Values: How have missing values been imported (e.g., NA, blanks, specific codes)?
+
+### Tibbles
+
+Simply typing the name of your tibble in the console and pressing Enter will give you a neat, truncated printout. This is excellent for quickly verifying the first few rows, columns, and, importantly, the inferred data types displayed at the top of each column. Tibbles are designed to be user-friendly in their display.
+
+```{r}
+penguins_csv
+```
+
+### The structure function `str()`
+
+The `str()` (for "structure") function provides a concise, high-level summary of a data.frame (and may other objects in R). It reveals the dimensions of a data.frame followed by the data type of each column and a short glimpse of its contents.
+
+```{r}
+str(penguins_csv)
+```
+
+### Glimpse
+
+`glimpse()` from the **dplyr** package provides a neat view of a data.frame structure and is very similar to `str()` but with some nicer printing.
+
+```{r}
+dplyr::glimpse(penguins_csv)
+```
+
+By diligently performing these checks, you lay a solid, accurate foundation for all subsequent analyses. Skipping this step is akin to building a house on shaky ground – problems will inevitably emerge down the line.
+
+## Summary
+
+With our data successfully imported and verified, we've cleared a critical hurdle. There may still be some cleaning to do but we have done as much as we can at the import stage. In the next chapter, we'll explore how to transform, clean, and reshape your data, preparing it for the rigorous statistical tests and compelling visualizations that drive scientific discovery.

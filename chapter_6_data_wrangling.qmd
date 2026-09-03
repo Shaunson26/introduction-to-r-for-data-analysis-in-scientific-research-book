@@ -1,0 +1,95 @@
+## Data Wrangling / cleaning / prep
+
+You've successfully imported your raw data into R, a crucial first step in any scientific data analysis pipeline. While you might be fortunate enough to work with datasets that are largely "clean" - meaning they're generally free from major structural issues like incorrect encodings or widely disparate formats - the journey from raw data to ready-for-analysis data is rarely a straight line. This is where data wrangling comes in.
+
+Data wrangling is the process of transforming and structuring your raw data into a format that is more suitable for analysis and visualization. It's akin to preparing your ingredients before you cook a meal: even if you have the freshest produce, you still need to wash, chop, and perhaps measure them before they can be used in a recipe.
+
+In scientific research, data wrangling often involves two primary activities.
+
+- Firstly, you'll frequently need to derive new variables or columns based on existing ones. This might include calculating ratios, growth rates, concentrations, or composite scores that are essential for addressing your research questions.
+
+- Secondly, even with seemingly "clean" data, it's vital to check for and address subtle inconsistencies, errors, or redundancies. This could involve verifying that all measurements fall within expected ranges, ensuring categorical variables are consistently spelled, or identifying and handling duplicate entries. Overlooking these steps can lead to misleading results and flawed conclusions.
+
+This chapter will introduce you to the powerful tidyverse collection of R packages, a suite of tools designed to make data wrangling intuitive, efficient, and highly readable. By mastering these techniques, you'll be able to confidently prepare your data, ensuring its integrity and setting a robust foundation for rigorous scientific analysis.
+
+```{r}
+penguins <- readr::read_csv("data/penguins.csv")
+```
+
+## Column names
+
+R has specific rules for valid variable names, and these rules also apply to column names in data frames. For instance, column names can't start with a number or contain special characters like !, \@, #, or \$. However, if you are importing data with column names that break these rules, two things can happen depending on the import function you are using:
+
+- Base R import functions will silently 'fix' the names by removing and/or replacing any special characters e.g. `Age (years)` would be transformed to `Age..years.`.
+
+- Tidyverse functions try to preserve your data but this will result in you having to access column names using backticks (e.g., `dataAge (years)`), but this is cumbersome and prone to typos. This can break code that relies on clean, consistent naming conventions and can complicate data manipulation task.
+
+To avoid these issues, it is best practice to either manually rename columns after importing or to use the **janitor** package, which provides a simple function, **clean_names()\`**, to programmatically transform messy column names into a consistent, tidy format. This approach ensures your code is readable, maintainable, and less likely to break.
+
+```{r}
+# Janitor clean_names
+```
+
+## Compact data summaries
+
+the `skimr` package provides a simple to use function to compactly display a summary of a data.frame. It is a good initial step. Like `glimpse()` it provides the number of rows and columns, and the column data types, but it goes one step further to summarise the values observed in each of the column, and groups the results by column data type.
+
+```{r}
+penguins |> 
+  skimr::skim()
+```
+
+## Counting groups
+
+Counts for checks, not counting for publication?
+
+```{r}
+penguins |> 
+  dplyr::count(species)
+
+penguins |> 
+  janitor::tabyl(species)
+```
+
+## Creating and modifying columns with mutate()
+
+### dervied column
+
+One of the most common and powerful data wrangling tasks in scientific research is the creation of new variables from existing ones. Often, the raw data you collect doesn't contain all the metrics you need for analysis directly; instead, you need to calculate them. The dplyr::mutate() function is your go-to tool for this purpose.
+
+mutate() allows you to add new columns to your dataset or modify existing ones. Its strength lies in its ability to apply functions and perform calculations row-wise across your data. You simply provide the name of your new column (or the column you wish to modify) followed by an equals sign (=) and the expression that defines its values.
+
+```{r, eval=F}
+# Mutate example
+penguins <- 
+  penguins |> 
+  mutate(
+    bill_length_to_depth_ratio = bill_length_mm / bill_depth_mm
+  )
+```
+
+### Modify exsiting column
+
+```{r, eval=F}
+# Mutate example
+... <- 
+  ... |> 
+  mutate(
+    ... = case_when()
+  )
+```
+
+## Subsetting data
+
+```{r, eval=F}
+# Filter
+
+```
+
+## Joining data
+
+## Reshaping data
+
+## Summarizing data using summarise() and group_by().
+
+## Illustrate with examples relevant to scientific data (e.g., filtering data for a specific treatment group, calculating group means).
